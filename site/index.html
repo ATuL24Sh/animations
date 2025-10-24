@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Animation Demo</title>
+  <style>
+    body { background:#0f172a; color:#fff; font-family:system-ui,Arial; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; }
+    .stage { width:720px; height:360px; border-radius:12px; background: linear-gradient(120deg,#07112a,#0b1f3a); box-shadow:0 10px 30px rgba(0,0,0,.6); position:relative; overflow:hidden; }
+    .ball {
+      width:80px; height:80px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #ffd86b, #ff8a00);
+      position:absolute; left:20px; top:140px;
+      transform-origin:center;
+      animation: float 3s ease-in-out infinite;
+      box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+    .ripple {
+      position:absolute; left:50%; top:50%; width:40px; height:40px; border-radius:50%;
+      transform:translate(-50%,-50%); opacity:0.6; border:2px solid rgba(255,255,255,0.15);
+      animation: ripple 3s infinite;
+    }
+    @keyframes float {
+      0%   { left:20px; transform: translateY(0) rotate(0deg) scale(1); }
+      25%  { left:300px; transform: translateY(-60px) rotate(20deg) scale(1.05); }
+      50%  { left:600px; transform: translateY(0) rotate(0deg) scale(1); }
+      75%  { left:300px; transform: translateY(60px) rotate(-20deg) scale(.95); }
+      100% { left:20px; transform: translateY(0) rotate(0deg) scale(1); }
+    }
+    @keyframes ripple {
+      0% { width:40px; height:40px; opacity:.6; transform: translate(-50%,-50%) scale(.8); }
+      50% { width:420px; height:420px; opacity:.08; transform: translate(-50%,-50%) scale(1.8); }
+      100% { width:40px; height:40px; opacity:0; transform: translate(-50%,-50%) scale(.8); }
+    }
+    .caption { position:absolute; left:20px; bottom:18px; font-weight:600; color:#cfe7ff; text-shadow:0 2px 6px rgba(2,6,23,.6); }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="ball"></div>
+    <div class="ripple"></div>
+    <div class="caption">Docker Animation Demo — open at <strong>localhost:4000</strong></div>
+  </div>
+</body>
+</html>
